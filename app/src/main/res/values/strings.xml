@@ -1,0 +1,98 @@
+<resources>
+    <string name="app_name">iCollection</string>
+    <string name="action_search">Search</string>
+    <string name="call">Call</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="share_format" formatted="false">%s - %s BY TEMPO APP</string>
+    <string name="short_dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="medium_dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="long_dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        \n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        \n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        \n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="no_call_feature">Sorry! Your device does not support calling feature!</string>
+    <string name="email">Email</string>
+    <string name="filter">Filter</string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
+    <string name="confirm">CONFIRM</string>
+
+    <string name="fontello_icon_user_6">&#xee37;</string>
+    <string name="fontello_icon_doc_6">&#xee45;</string>
+    <string name="fontello_icon_photo_1">&#xee3a;</string>
+    <string name="fontello_icon_tv">&#xee4d;</string>
+    <string name="fontello_icon_food_1">&#xee5d;</string>
+    <string name="fontello_icon_email">&#xecc5;</string>
+    <string name="fontello_icon_key">&#xe8d3;</string>
+    <string name="fontello_icon_user">&#xe80f;</string>
+    <string name="fontello_icon_venus_mars">&#xe939;</string>
+    <string name="fontello_icon_phone_1">&#xe9fd;</string>
+    <string name="fontello_icon_mail_6">&#xee34;</string>
+    <string name="fontello_icon_key_4">&#xee59;</string>
+    <string name="fontello_icon_mobile_5">&#xee4f;</string>
+    <string name="fontello_icon_lock_6">&#xee3c;</string>
+    <string name="fontello_icon_globe_5">&#xee52;</string>
+    <string name="fontello_icon_right_open_1">&#xea1e;</string>
+    <string name="fontello_icon_thumbs_up_4">&#xee3f;</string>
+    <string name="fontello_icon_eye_6">&#xee3d;</string>
+    <string name="fontello_icon_tag_5">&#xee3e;</string>
+    <string name="fontello_icon_star_6">&#xee36;</string>
+    <string name="fontello_icon_params">&#xee48;</string>
+    <string name="fontello_icon_shop_1">&#xee5e;</string>
+    <string name="fontello_icon_basket_2">&#xeb86;</string>
+    <string name="fontello_icon_basket_1">&#xea02;</string>
+    <string name="fontello_icon_heart_empty_1">&#xe9b0;</string>
+    <string name="fontello_icon_heart_1">&#xe9af;</string>
+    <string name="fontello_icon_up_open_1">&#xea1f;</string>
+    <string name="fontello_icon_comment_5">&#xee41;</string>
+    <string name="fontello_icon_calendar_7">&#xee49;</string>
+    <string name="fontello_icon_phone">&#xe835;</string>
+    <string name="fontello_icon_cancel_1">&#xe9bc;</string>
+    <string name="fontello_icon_search_7">&#xee62;</string>
+    <string name="fontello_icon_movie">&#xebc3;</string>
+    <string name="fontello_icon_cinema">&#xec5e;</string>
+    <string name="fontello_icon_clock_4">&#xebf8;</string>
+    <string name="fontello_icon_star_4">&#xebbb;</string>
+    <string name="fontello_icon_cd_1">&#xeb3e;</string>
+    <string name="fontello_icon_fire_1">&#xec2b;</string>
+    <string name="fontello_icon_megaphone">&#xe8d1;</string>
+    <string name="fontello_icon_calendar_1">&#xea04;</string>
+    <string name="fontello_icon_users">&#xe812;</string>
+    <string name="fontello_icon_pencil">&#xe801;</string>
+    <string name="fontello_icon_facebook_circled">&#xea9d;</string>
+    <string name="fontello_icon_twitter_circled">&#xea9b;</string>
+    <string name="fontello_icon_linkedin_circled">&#xeaa6;</string>
+    <string name="fontello_icon_gplus_circled">&#xeaa0;</string>
+    <string name="fontello_icon_briefcase_2">&#xede6;</string>
+    <string name="fontello_icon_cog_4">&#xed87;</string>
+    <string name="fontello_icon_bell_4">&#xed71;</string>
+    <string name="fontello_icon_camera_6">&#xee39;</string>
+    <string name="fontello_icon_lightbulb_2">&#xee4c;</string>
+    <string name="fontello_icon_heart_6">&#xee35;</string>
+    <string name="fontello_icon_diamond_1">&#xee5f;</string>
+    <string name="fontello_icon_location_6">&#xee42;</string>
+    <string name="fontello_icon_right_3">&#xec03;</string>
+    <string name="fontello_icon_user_1">&#xe9b3;</string>
+    <string name="fontello_icon_user_2">&#xeaca;</string>
+    <string name="fontello_icon_user_3">&#xeb60;</string>
+    <string name="fontello_icon_user_4">&#xebbf;</string>
+    <string name="fontello_icon_check_1">&#xe9bb;</string>
+    <string name="fontello_icon_mic_3">&#xebf6;</string>
+    <string name="fontello_icon_brush">&#xe92e;</string>
+    <string name="fontello_icon_book_1">&#xe9f8;</string>
+    <string name="fontello_icon_apple">&#xe947;</string>
+    <string name="fontello_icon_flight">&#xe891;</string>
+    <string name="fontello_icon_pencil_5">&#xed68;</string>
+    <string name="fontello_icon_camera_alt">&#xe81b;</string>
+    <string name="fontello_icon_basket_3">&#xed8c;</string>
+    <string name="fontello_icon_megaphone_1">&#xea7b;</string>
+    <string name="fontello_icon_tree_1">&#xec8c;</string>
+    <string name="fontello_icon_child_1">&#xee0a;</string>
+
+    <string-array name="ChecklistItem">
+        <item></item>
+        <item>ADA</item>
+        <item>TIDAK</item>
+    </string-array>
+</resources>

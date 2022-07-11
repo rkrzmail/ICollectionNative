@@ -1,0 +1,176 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SignInSignUpFirstDesignTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorAforSFD</item>
+        <item name="colorPrimaryDark">@color/colorBforSFD</item>
+        <item name="colorAccent">@color/colorCforSFD</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+
+    <style name="SignInSignUpSecondDesignTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorAforSSD</item>
+        <item name="colorPrimaryDark">@color/colorBforSSD</item>
+        <item name="colorAccent">@color/colorDforSSD</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+
+    <style name="SignInSignUpThirdDesignTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorBforSFOD</item>
+        <item name="colorPrimaryDark">@color/colorAforSFOD</item>
+        <item name="colorAccent">@color/colorCforSFOD</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+
+    <style name="SignInSignUpFourthDesignTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@color/colorAforSFOD</item>
+        <item name="colorAccent">@color/colorAforSTD</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+
+    <style name="ListViewFirstDesignTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="colorAccent">@color/colorBforLFID</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+    </style>
+
+    <style name="ListViewSecondDesignTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimaryDark">@color/colorAforLSD</item>
+        <item name="colorAccent">@color/colorDforLSD</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+    </style>
+
+    <style name="ListViewThirdDesignTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorBforLTD</item>
+        <item name="colorPrimaryDark">@color/colorAforLTD</item>
+        <item name="colorAccent">@color/colorEforLTD</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+
+    <style name="ListViewFourthDesignTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorBforLFD</item>
+        <item name="colorPrimaryDark">@color/colorAforLFD</item>
+        <item name="colorAccent">@color/colorCforLFD</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+
+    <style name="UserProfileFirstDesignTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorBforPFD</item>
+        <item name="colorPrimaryDark">@color/colorAforPFD</item>
+        <item name="colorAccent">@color/colorCforPFD</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+
+    <style name="UserProfileSecondDesignTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@color/colorAforPSD</item>
+        <item name="colorAccent">@color/colorEforPSD</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+
+    <style name="UserProfileSecondDesignThemeForImages" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@color/colorAforPSD</item>
+        <item name="colorAccent">@color/colorEforPSD</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="UserProfileThirdDesignTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorBforPTD</item>
+        <item name="colorPrimaryDark">@color/colorBforPTD</item>
+        <item name="colorAccent">@color/colorGforPTD</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+
+    <style name="UserProfileFourthDesignTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/colorBforPFOD</item>
+        <item name="colorAccent">@color/colorCforPFOD</item>
+        <item name="android:windowSoftInputMode">stateAlwaysHidden</item>
+    </style>
+
+    <style name="UserProfileFourthDesignThemeForImages" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@color/colorBforPFOD</item>
+        <item name="colorAccent">@color/colorCforPFOD</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="WelcomeScreenFirstDesignTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorDforWFD</item>
+        <item name="colorPrimaryDark">@color/colorAforWFD</item>
+        <item name="colorAccent">@color/colorBforWFD</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="WelcomeScreenSecondDesignTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorAforWSD</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+
+
+    <style name="Yellow.Small.AppCompatRatingBar.White" parent="Base.Widget.AppCompat.RatingBar.Small">
+    <item name="colorControlNormal">@color/material_grey_300</item>
+    <item name="colorControlActivated">@color/colorEforLFD</item>
+    </style>
+
+    <style name="RippleStyleWhite">
+        <item name="mrl_rippleOverlay">true</item>
+        <item name="mrl_rippleColor">#80FFFFFF</item>
+        <item name="mrl_rippleHover">true</item>
+        <item name="mrl_rippleAlpha">0.2</item>
+    </style>
+
+    <style name="RippleStyleBlack" parent="RippleStyleWhite">
+        <item name="mrl_rippleColor">#8096989A</item>
+    </style>
+
+    <style name="ScrollbarStyle">
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:scrollbarThumbVertical">@drawable/scrollbar_thumb</item>
+        <item name="android:scrollbarTrackVertical">@android:color/transparent</item>
+        <item name="android:scrollbarSize">2dp</item>
+        <item name="android:scrollbarFadeDuration">2000</item>
+        <item name="android:scrollbarDefaultDelayBeforeFade">1000</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Button.Primary" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/colorBforLSD</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="PostButtonComment" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/colorBforPFOD</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>

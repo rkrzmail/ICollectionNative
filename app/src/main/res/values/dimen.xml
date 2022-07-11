@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="title_extra_large">32sp</dimen>
+    <dimen name="title_very_large">26sp</dimen>
+    <dimen name="title_large">22sp</dimen>
+    <dimen name="title_medium">20sp</dimen>
+    <dimen name="title_small">18sp</dimen>
+    <dimen name="content_very_small">10sp</dimen>
+    <dimen name="content_small">12sp</dimen>
+    <dimen name="content_medium">14sp</dimen>
+    <dimen name="content_large">16sp</dimen>
+    <dimen name="icon_small">16sp</dimen>
+    <dimen name="icon_medium">20sp</dimen>
+    <dimen name="icon_large">24sp</dimen>
+    <dimen name="icon_xlarge">26sp</dimen>
+    <dimen name="layout_margin_small">8dp</dimen>
+    <dimen name="layout_margin">16dp</dimen>
+    <dimen name="layout_margin_large">32dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">32dp</dimen>
+    <dimen name="sign_in_logo">180dp</dimen>
+    <dimen name="image_xxxsmall">40dp</dimen>
+    <dimen name="image_xxsmall">60dp</dimen>
+    <dimen name="image_xsmall">80dp</dimen>
+    <dimen name="image_small">100dp</dimen>
+    <dimen name="image_medium">120dp</dimen>
+    <dimen name="image_large">140dp</dimen>
+    <dimen name="image_xlarge">180dp</dimen>
+    <dimen name="dialog_width">300dp</dimen>
+    <dimen name="margin_top_for_title_user_profile_first_design">55dp</dimen>
+    <dimen name="image_header_height_user_profile_first_design">220dp</dimen>
+    <dimen name="margin_start_for_user_profile_second_design">64dp</dimen>
+    <dimen name="image_row_height_user_profile_third_design">200dp</dimen>
+    <dimen name="layout_row_height_user_profile_third_design">70dp</dimen>
+    <dimen name="layout_row_height_home_menu">75dp</dimen>
+    <dimen name="image_welcome_screen_first_design">250dp</dimen>
+    <dimen name="text_width_welcome_screen_first_design">240dp</dimen>
+    <dimen name="image_welcome_screen_second_design">300dp</dimen>
+    <dimen name="bottom_padding_welcome_screen_second_design">29dp</dimen>
+    <dimen name="bottom_margin_welcome_screen_third_design">64dp</dimen>
+    <dimen name="image_row_height_list_view_second_design">200dp</dimen>
+    <dimen name="image_header_list_view_second_design_detail">250dp</dimen>
+
+</resources>

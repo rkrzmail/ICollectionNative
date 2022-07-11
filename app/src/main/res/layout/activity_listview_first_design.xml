@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/windowBackground">
+
+    <android.support.v4.widget.SlidingPaneLayout
+        android:id="@+id/sliding_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="32dp"
+                android:src="@drawable/dummy_logo5" />
+
+            <ListView
+                android:id="@+id/menu_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                android:elevation="6dp"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:scaleType="centerInside"
+
+                        android:src="@drawable/dummy_logo5" />
+
+                    <TextView
+                        android:id="@+id/txtTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|bottom"
+                        android:paddingRight="5dp"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+
+
+            </android.support.v7.widget.Toolbar>
+
+            <FrameLayout
+                android:id="@+id/content_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+    </android.support.v4.widget.SlidingPaneLayout>
+
+    <TextView
+        android:id="@+id/txtV"
+        android:layout_margin="3dp"
+        android:textSize="8sp"
+        android:textStyle="italic"
+        android:textColor="#7f7f7f"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Version "
+        android:layout_gravity="center_horizontal|bottom"/>
+
+    <!--<android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/navigation" />-->
+    <FrameLayout
+        android:id="@+id/nav"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </FrameLayout>
+
+</FrameLayout>

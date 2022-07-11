@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navsurvey"
+        android:icon="@drawable/maps"
+        android:title="PETA SURVEY" />
+
+    <item
+        android:id="@+id/navalamat"
+        android:icon="@drawable/maps"
+        android:title="PETA ALAMAT" />
+
+    <item
+        android:id="@+id/navbayar"
+        android:icon="@drawable/maps"
+        android:title="PETA BAYAR" />
+
+
+
+</menu>

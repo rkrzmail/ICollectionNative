@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/about"
+        android:icon="@mipmap/ic_face_white_24dp"
+        android:title="About me" />
+
+    <item
+        android:id="@+id/works"
+        android:icon="@mipmap/ic_brush_white_24dp"
+        android:title="My Works" />
+
+    <item
+        android:id="@+id/followers"
+        android:icon="@mipmap/ic_people_white_24dp"
+        android:title="My Followers" />
+
+
+</menu>

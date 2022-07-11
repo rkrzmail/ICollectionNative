@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MerriWeatherTextView">
+        <attr name="typeface" format="enum">
+            <enum name="merriWeatherBlack" value="0" />
+            <enum name="merriWeatherBold" value="1" />
+            <enum name="merriWeatherLight" value="2" />
+            <enum name="merriWeatherLightItalic" value="3" />
+            <enum name="merriWeatherRegular" value="4" />
+            <enum name="merriWeatherItalic" value="5" />
+        </attr>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="3dp"
+        app:cardBackgroundColor="@color/white">
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/layout_parent"
+            style="@style/RippleStyleBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/all_ilang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+        <!--        <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="140dp"
+                    android:layout_height="110dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    android:src="@drawable/default_image" /> -->
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.icollection.fonts.MerriweatherTextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:text="Title"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="14sp"
+                        android:maxLines="2"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"
+                        app:typeface="merriWeatherBold" />
+
+                    <com.icollection.fonts.MerriweatherTextView
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/title"
+                        android:maxLines="2"
+                        android:text="description"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="12sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        app:typeface="merriWeatherLight" />
+
+                    <com.icollection.fonts.MerriweatherTextView
+                        android:id="@+id/nopsb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/description"
+                        android:maxLines="1"
+                        android:text="NO PSB"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="12sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        app:typeface="merriWeatherLight" />
+                    <com.icollection.fonts.MerriweatherTextView
+                        android:id="@+id/nokwitansi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/nopsb"
+                        android:maxLines="1"
+                        android:text="NO KWITANSI"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="12sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        app:typeface="merriWeatherLight" />
+                    <com.icollection.fonts.MerriweatherTextView
+                        android:id="@+id/nopol"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/nokwitansi"
+                        android:maxLines="1"
+                        android:text="NO KWITANSI"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="12sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        app:typeface="merriWeatherLight" />
+                    <com.icollection.fonts.MerriweatherTextView
+                        android:id="@+id/notel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/nopol"
+                        android:maxLines="1"
+                        android:text="NO KWITANSI"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="12sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        app:typeface="merriWeatherLight" />
+
+                    <com.icollection.fonts.MerriweatherTextView
+                        android:id="@+id/category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/tags_background_green"
+                        android:paddingBottom="1dp"
+                        android:paddingEnd="1dp"
+                        android:paddingStart="1dp"
+                        android:paddingTop="1dp"
+                        android:text="category"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:typeface="merriWeatherRegular"
+                        android:layout_alignParentRight="true" />
+
+                    <com.icollection.fonts.MerriweatherTextView
+                        android:id="@+id/bhc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/tags_background_green"
+                        android:paddingBottom="1dp"
+                        android:paddingEnd="1dp"
+                        android:paddingStart="1dp"
+                        android:paddingTop="1dp"
+                        android:text="BHC"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:typeface="merriWeatherRegular"
+                        android:layout_alignParentRight="true" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
