@@ -6,8 +6,8 @@ android {
         applicationId "com.icollection"
         minSdkVersion 17
         targetSdkVersion 30
-        versionCode 100
-        versionName "2.5.150"
+        versionCode 101
+        versionName "2.5.151"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
