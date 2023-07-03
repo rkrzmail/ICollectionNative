@@ -1,5 +1,7 @@
 package com.icollection.tracker;
 
+import static com.icollection.util.AppUtil.NowX;
+
 import android.app.Activity;
 import android.app.IntentService;
 import android.content.Context;
@@ -11,7 +13,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
+import com.icollection.modelservice.OrderItem_Table;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -19,30 +21,40 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.icollection.APIInterfacesRest;
 import com.icollection.AppController;
-import com.icollection.BHCActivity;
 import com.icollection.JanjiBayarActivity;
 import com.icollection.modelservice.LocationModel;
 import com.icollection.modelservice.OrderItem;
-import com.icollection.modelservice.OrderItem_Table;
 import com.icollection.modelservice.UpdateOrder;
 import com.icollection.util.APIClient;
 import com.icollection.util.AppUtil;
+import com.icollection.util.EasySSLSocketFactory;
 import com.icollection.util.SharedPreferencesUtil;
 import com.icollection.util.Utility;
 import com.naa.data.Nson;
 import com.naa.utils.InternetX;
-import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
-
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.params.ConnManagerPNames;
+import org.apache.http.conn.params.ConnPerRouteBean;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.SingleClientConnManager;
 import org.apache.http.message.BasicNameValuePair;
+
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -62,8 +74,6 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.icollection.util.AppUtil.NowX;
 
 /** Este intent service es usado por el JobScheduler directamente y por el AlarmManager
  * mediante la clase {@link GpsTrackerWakefulService}.
@@ -205,11 +215,9 @@ public class GpsTrackerIntentService extends IntentService implements LocationLi
             try {
 
 
-
-
                 HttpPost post = new HttpPost(AppUtil.BASE_URL+"apicoll/gps_tracking/");
 
-                // HttpPost post = new HttpPost(AppUtil.BASE_URL+"gps_tracking");
+
 
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
                 nameValuePairs.add(new BasicNameValuePair("username",
@@ -223,12 +231,19 @@ public class GpsTrackerIntentService extends IntentService implements LocationLi
                 nameValuePairs.add(new BasicNameValuePair("key",
                         AppController.getToken()));
                 post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-
                 post.addHeader("X-Api-Key", AppUtil.API_KEY);
 
+                SchemeRegistry schemeRegistry = new SchemeRegistry();
+                schemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+                schemeRegistry.register(new Scheme("https", new EasySSLSocketFactory(), 443));
+                HttpParams params = new BasicHttpParams();
+                params.setParameter(ConnManagerPNames.MAX_TOTAL_CONNECTIONS, 30);
+                params.setParameter(ConnManagerPNames.MAX_CONNECTIONS_PER_ROUTE, new ConnPerRouteBean(30));
+                params.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+                params.setParameter(HttpProtocolParams.USE_EXPECT_CONTINUE, false);
+                ClientConnectionManager cm = new SingleClientConnManager(params, schemeRegistry);
 
-                HttpClient client = new DefaultHttpClient();
+                HttpClient client =  new DefaultHttpClient(cm, params);//new DefaultHttpClient();
 
                 HttpResponse response = client.execute(post);
 

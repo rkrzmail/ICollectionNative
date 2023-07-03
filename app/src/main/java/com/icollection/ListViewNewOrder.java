@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
@@ -22,9 +23,11 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.location.Location;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -85,9 +88,11 @@ import com.raizlabs.android.dbflow.structure.database.transaction.Transaction;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -110,7 +115,7 @@ import static com.icollection.util.AppUtil.NowX;
  * Created by Mounzer on 8/22/2017.
  */
 
-public class ListViewNewOrder extends AppCompatActivity implements ListViewNewOrderFragment.OnItemSelectedListener,ListViewRekapBayarFragment.OnItemSelectedListener {
+public class ListViewNewOrder extends AppActivity implements ListViewNewOrderFragment.OnItemSelectedListener,ListViewRekapBayarFragment.OnItemSelectedListener {
     private static final String LOG_TAG = ListViewNewOrder.class.getSimpleName();
     SlidingPaneLayout mSlidingPanel;
     ListView mMenuList;
@@ -241,8 +246,8 @@ public class ListViewNewOrder extends AppCompatActivity implements ListViewNewOr
                                 hashtable.put("key",AppController.getToken());
                                 hashtable.put("username",AppController.getUsername());
 
-                                out = Utility.getHttpConnectionPost(url, hashtable);
-
+                                //out = Utility.getHttpConnectionPost(url, hashtable);
+                                out = InternetX.postHttpConnection(url, hashtable);
                             }
 
                             @Override
@@ -342,7 +347,9 @@ public class ListViewNewOrder extends AppCompatActivity implements ListViewNewOr
                             hashtable.put("key",AppController.getToken());
                             hashtable.put("username",AppController.getUsername());
 
-                            out = Utility.getHttpConnectionPost(url, hashtable);
+                            //out = Utility.getHttpConnectionPost(url, hashtable);
+                            out = InternetX.postHttpConnection(url, hashtable);
+
 
                         }
 
@@ -540,6 +547,20 @@ public class ListViewNewOrder extends AppCompatActivity implements ListViewNewOr
         IntentFilter filter = new IntentFilter();
         filter.addAction("com.icollection.reload");
         registerReceiver(receiver, filter);
+
+
+
+        if (isDeviceRooted()) {
+            Toast.makeText(this, "Rooted Device!", Toast.LENGTH_LONG).show();
+            exitApp(this);
+        }
+        if (isRooted()) {
+            Toast.makeText(this, "Emulator Rooted Device!", Toast.LENGTH_LONG).show();
+            exitApp(this);
+        }
+
+        exitIfMockLocationOn(null, this);
+
     }
 
     SlidingPaneLayout.PanelSlideListener panelSlideListener = new SlidingPaneLayout.PanelSlideListener() {
@@ -878,8 +899,9 @@ public class ListViewNewOrder extends AppCompatActivity implements ListViewNewOr
                             @Override
                             public void onSuccess(Location location) {
                                 if (location != null) {
-                                    Utility.setSetting(ListViewNewOrder.this, "GPS", location.getLatitude() + "," + location.getLongitude());
                                     currlocation = location;
+                                    exitIfMockLocationOn(location, ListViewNewOrder.this);
+                                    Utility.setSetting(ListViewNewOrder.this, "GPS", location.getLatitude() + "," + location.getLongitude());
                                 }
                             }
                         });
@@ -942,10 +964,13 @@ public class ListViewNewOrder extends AppCompatActivity implements ListViewNewOr
                                     }
                                 }
 
+
                                 final Location loc1 = location;
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         mProgressDialog.dismiss();
+
+                                        exitIfMockLocationOn(loc1, ListViewNewOrder.this);
 
                                         myOrder.setStatusBayarX();
                                         if (loc1 != null) {
@@ -1043,6 +1068,7 @@ public class ListViewNewOrder extends AppCompatActivity implements ListViewNewOr
                             @Override
                             public void onSuccess(Location location) {
                                 if (location != null) {
+                                    exitIfMockLocationOn(location, ListViewNewOrder.this);
                                     Utility.setSetting(ListViewNewOrder.this, "GPS", location.getLatitude() + "," + location.getLongitude());
                                     currlocation = location;
                                 }
@@ -1115,6 +1141,9 @@ public class ListViewNewOrder extends AppCompatActivity implements ListViewNewOr
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         mProgressDialog.dismiss();
+
+                                        exitIfMockLocationOn(loc1, ListViewNewOrder.this);
+
                                         if (loc1 != null) {
                                             Utility.setSetting(ListViewNewOrder.this, "GPS", loc1.getLatitude() + "," + loc1.getLongitude());
                                             Toast.makeText(getApplicationContext(), "Lokasi anda " + loc1.getLatitude() + "," + loc1.getLongitude(), Toast.LENGTH_SHORT).show();
@@ -1658,5 +1687,7 @@ public class ListViewNewOrder extends AppCompatActivity implements ListViewNewOr
     public Activity getCurrActivity(){
         return  this;
     }
+
+
 
 }

@@ -75,7 +75,7 @@ import static com.icollection.AppController.MY_PERMISSIONS_REQUEST_CAMERA;
  * Created by Mounzer on 8/22/2017.
  */
 
-public class ListViewDetails2FirstDesignActivity extends AppCompatActivity {
+public class ListViewDetails2FirstDesignActivity extends AppActivity {
     private static final String LOG_TAG = ListViewDetails2FirstDesignActivity.class.getSimpleName();
     Toolbar toolbar;
 
@@ -681,24 +681,29 @@ public class ListViewDetails2FirstDesignActivity extends AppCompatActivity {
             /*bitmap = (Bitmap) data.getExtras().get("data");
             ImageViewHolder.setImageBitmap(bitmap);*/
             getCamera("CAMERA_REQUEST", data, ImageViewHolder);
+            waitGPS();
 
         } else if (requestCode == CAMERA_REQUEST_LAIN && resultCode == Activity.RESULT_OK) {
             getCamera("CAMERA_REQUEST_LAIN", data, (ImageView) findViewById(R.id.imgByrFoto));
+            waitGPS();
         } else if (requestCode == CAMERA_REQUEST_DEPAN1 && resultCode == Activity.RESULT_OK) {
             /*bitmap = (Bitmap) data.getExtras().get("data");
             ImageView imageView = (ImageView)findViewById(R.id.imgFotoDepan);
             imageView.setImageBitmap(bitmap);*/
             getCamera("CAMERA_REQUEST_DEPAN1", data, (ImageView) findViewById(R.id.imgFotoDepan));
+            waitGPS();
         } else if (requestCode == CAMERA_REQUEST_KANAN2 && resultCode == Activity.RESULT_OK) {
            /* bitmap2 = (Bitmap) data.getExtras().get("data");
             ImageView imageView = (ImageView)findViewById(R.id.imgFotoKanan);
             imageView.setImageBitmap(bitmap2);*/
             getCamera("CAMERA_REQUEST_KANAN2", data, (ImageView) findViewById(R.id.imgFotoKanan));
+            waitGPS();
         } else if (requestCode == CAMERA_REQUEST_KIRI3 && resultCode == Activity.RESULT_OK) {
            /* bitmap3 = (Bitmap) data.getExtras().get("data");
             ImageView imageView = (ImageView)findViewById(R.id.imgFotoKiri);
             imageView.setImageBitmap(bitmap3);*/
             getCamera("CAMERA_REQUEST_KIRI3", data, (ImageView) findViewById(R.id.imgFotoKiri));
+            waitGPS();
         } else if (requestCode == CAMERA_REQUEST_BELANAG4 && resultCode == Activity.RESULT_OK) {
             /* bitmap4 = (Bitmap) data.getExtras().get("data");
              *//*ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -706,6 +711,7 @@ public class ListViewDetails2FirstDesignActivity extends AppCompatActivity {
             ImageView imageView = (ImageView)findViewById(R.id.imgFotoBelakang);
             imageView.setImageBitmap(bitmap4);*/
             getCamera("CAMERA_REQUEST_BELANAG4", data, (ImageView) findViewById(R.id.imgFotoBelakang));
+            waitGPS();
         } else if (requestCode == Gallary_REQUEST && resultCode == Activity.RESULT_OK) {
             Uri selectedImageUri = data.getData();
 
@@ -737,6 +743,7 @@ public class ListViewDetails2FirstDesignActivity extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
 
             ImageViewHolder.setImageBitmap(bitmap);
+            waitGPS();
 
         } else if (requestCode == 123 && resultCode == 123) {
             Log.i("checklist", data.getStringExtra("checklist"));

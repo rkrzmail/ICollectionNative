@@ -1,11 +1,27 @@
 package com.icollection.util;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -40,7 +56,45 @@ public class APIClient {
 
        // HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
        // interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        OkHttpClient client;
+
+        try {
+            // Create a trust manager that does not validate certificate chains
+            X509TrustManager x509TrustManager =  new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                }
+
+                @Override
+                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                }
+
+                @Override
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return new java.security.cert.X509Certificate[]{};
+                }
+            };
+            final TrustManager[] trustAllCerts = new TrustManager[] {
+                    x509TrustManager
+            };
+
+            // Install the all-trusting trust manager
+            final SSLContext sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+            // Create an ssl socket factory with our all-trusting manager
+            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+
+
+            client = new OkHttpClient.Builder()
+                    .sslSocketFactory(sslContext.getSocketFactory(), new EasyX509TrustManager(null))
+                    .hostnameVerifier(getHostnameVerifier())
+                    .build();
+        }catch (Exception e){
+            client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        }
+
+
+
 
         GsonBuilder gb = new GsonBuilder();
         gb.registerTypeAdapter(String.class, new StringConverter());
@@ -60,6 +114,54 @@ public class APIClient {
 
         return retrofit;
     }
+    // for SSL...
+// Read more at https://developer.android.com/training/articles/security-ssl.html#CommonHostnameProbs
+    private static HostnameVerifier getHostnameVerifier() {
+        return new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true; // verify always returns true, which could cause insecure network traffic due to trusting TLS/SSL server certificates for wrong hostnames
+                //HostnameVerifier hv = HttpsURLConnection.getDefaultHostnameVerifier();
+                //return hv.verify("localhost", session);
+            }
+        };
+    }
+
+    private static TrustManager[] getWrappedTrustManagers(TrustManager[] trustManagers) {
+        final X509TrustManager originalTrustManager = (X509TrustManager) trustManagers[0];
+        return new TrustManager[]{
+                new X509TrustManager() {
+                    public X509Certificate[] getAcceptedIssuers() {
+                        return originalTrustManager.getAcceptedIssuers();
+                    }
+
+                    public void checkClientTrusted(X509Certificate[] certs, String authType) {
+                        try {
+                            if (certs != null && certs.length > 0){
+                                certs[0].checkValidity();
+                            } else {
+                                originalTrustManager.checkClientTrusted(certs, authType);
+                            }
+                        } catch (CertificateException e) {
+                            Log.w("checkClientTrusted", e.toString());
+                        }
+                    }
+
+                    public void checkServerTrusted(X509Certificate[] certs, String authType) {
+                        try {
+                            if (certs != null && certs.length > 0){
+                                certs[0].checkValidity();
+                            } else {
+                                originalTrustManager.checkServerTrusted(certs, authType);
+                            }
+                        } catch (CertificateException e) {
+                            Log.w("checkServerTrusted", e.toString());
+                        }
+                    }
+                }
+        };
+    }
+
 
     public static Retrofit getPlainClient() {
 
@@ -70,7 +172,45 @@ public class APIClient {
                 return chain.proceed(newRequest);
             }
         };
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        //OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+
+        OkHttpClient client;
+
+        try {
+            // Create a trust manager that does not validate certificate chains
+            X509TrustManager x509TrustManager =  new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                }
+
+                @Override
+                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                }
+
+                @Override
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return new java.security.cert.X509Certificate[]{};
+                }
+            };
+            final TrustManager[] trustAllCerts = new TrustManager[] {
+                    x509TrustManager
+            };
+
+            // Install the all-trusting trust manager
+            final SSLContext sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+            // Create an ssl socket factory with our all-trusting manager
+            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+
+
+            client = new OkHttpClient.Builder()
+                    .sslSocketFactory(sslContext.getSocketFactory(), new EasyX509TrustManager(null))
+                    .hostnameVerifier(getHostnameVerifier())
+                    .build();
+        }catch (Exception e){
+            client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        }
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(AppUtil.BASE_URL)

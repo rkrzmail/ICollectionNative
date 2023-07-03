@@ -43,8 +43,10 @@ public class AppUtil {
     //http://202.56.171.19:8085/ [DEV]
     //http://mobilekamm.ddns.net:8080/
     //http://202.56.171.19:8080/
-    public static String BASE_HOST = "http://mobilekamm.ddns.net:8080/";//"http://202.56.171.19:8085/";//http://202.56.171.19:8080/";//http://202.56.171.19:8087/";//http://202.56.171.19:8080/
-    public static String BASE_URL = BASE_HOST + "mdccoll/";//"apicoll/";//icollection/
+   // public static String BASE_HOST = "http://mobilekamm.ddns.net:8080/";//"http://202.56.171.19:8085/";//http://202.56.171.19:8080/";//http://202.56.171.19:8087/";//http://202.56.171.19:8080/
+    public static String BASE_HOST = "https://kamm-group.com:8099/";//"http://202.56.171.19:8085/";//http://202.56.171.19:8080/";//http://202.56.171.19:8087/";//http://202.56.171.19:8080/
+    public static String BASE_URL = BASE_HOST + "";//   mdccoll/  "apicoll/";//icollection/
+
 
     public static String API_KEY ="59D3CFCA29DB8697C4962A36EEB653C8";
 

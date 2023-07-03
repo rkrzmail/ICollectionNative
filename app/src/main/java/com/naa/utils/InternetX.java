@@ -2,10 +2,32 @@ package com.naa.utils;
 
 
 import com.icollection.AppController;
+import com.icollection.util.AppUtil;
+import com.icollection.util.EasySSLSocketFactory;
 import com.naa.data.Nson;
 import com.naa.data.Utility;
 import com.naa.data.UtilityAndroid;
 
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.params.ConnManagerPNames;
+import org.apache.http.conn.params.ConnPerRouteBean;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.SingleClientConnManager;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +41,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class InternetX {
@@ -162,63 +185,47 @@ public class InternetX {
     public static String postHttpConnection(String stringURL, Map args) {
         return  postHttpConnection(stringURL, new Nson(args));
     }
+
     public static String postHttpConnection(String stringURL, Nson args) {
         URL object;
         try {
             object = new URL(stringURL);//nikitaYToken(stringURL); tidak perlu
             HttpURLConnection con;
             try {
-                con = (HttpURLConnection) object.openConnection();
 
-                con.setDoOutput(true);
-                con.setDoInput(true);
-                con.setRequestProperty("User-Agent", "Mozilla/5.0 (Android 4.4; Mobile; rv:41.0; Nikita V3) Gecko/41.0 Firefox/41.0");
-                con.setRequestProperty("Accept", "text/plain, */*; q=0.01");
-                con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-                con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-                con.setRequestProperty("Accept", "application/json");
-                con.setRequestMethod("POST");
-                con.setConnectTimeout(30000);
+
+                HttpPost post = new HttpPost(stringURL);
+
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+
 
                 Nson keys = args.getObjectKeys();
 
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < keys.size(); i++) {
-                    String ds = keys.get(i).asString();
-                    if (i > 0){
-                        builder.append("&");
-                    }
-                    builder.append((urlEncode(keys.get(i).asString())+"="));
-                    builder.append(urlEncode(args.get(keys.get(i).asString()).asString()));
+                    nameValuePairs.add(new BasicNameValuePair(keys.get(i).asString(), args.get(keys.get(i).asString()).asString() ));
                 }
-                /*builder.append("&");
-                builder.append(("ytoken="));
-                builder.append(Utility.urlEncode(getSetting("TOKEN")));
-                builder.append("&");
-                builder.append(("yuserid="));
-                builder.append(Utility.urlEncode(getSetting("ID_USER")));*/
+                post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-                OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
-                wr.write(builder.toString());
-                wr.flush();
-                wr.close();
 
-                //display what returns the POST request
+                SchemeRegistry schemeRegistry = new SchemeRegistry();
+                schemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+                schemeRegistry.register(new Scheme("https", new EasySSLSocketFactory(), 443));
+                HttpParams params = new BasicHttpParams();
+                params.setParameter(ConnManagerPNames.MAX_TOTAL_CONNECTIONS, 30);
+                params.setParameter(ConnManagerPNames.MAX_CONNECTIONS_PER_ROUTE, new ConnPerRouteBean(30));
+                params.setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+                params.setParameter(HttpProtocolParams.USE_EXPECT_CONTINUE, false);
+                ClientConnectionManager cm = new SingleClientConnManager(params, schemeRegistry);
+                HttpClient client =  new DefaultHttpClient(cm, params);//new DefaultHttpClient();
+                HttpResponse response = client.execute(post);
+
 
                 StringBuilder sb = new StringBuilder();
-                int HttpResult = con.getResponseCode();
+                int HttpResult = response.getStatusLine().getStatusCode();
                 if (HttpResult == HttpURLConnection.HTTP_OK) {
-                    //Utility.sessionExpired(con.getHeaderFields());
+                    InputStream inputStream = response.getEntity().getContent();
 
-                    InputStream inputStream = con.getInputStream();
-                    /*String contentEncodingHeader = con.getHeaderField("Content-Encoding");
-                    if (contentEncodingHeader != null && contentEncodingHeader.equals("gzip")) {
-                        // Read the zipped contents.
-                        inputStream = new GZIPInputStream(con.getInputStream());
-                    } else {
-                        // Read the normal contents.
-                        inputStream = con.getInputStream();
-                    }*/
                     BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
                     String line = null;
                     while ((line = br.readLine()) != null) {
@@ -229,9 +236,9 @@ public class InternetX {
 
                      //return Utility.readFile(inputStream);
                 } else {
-                    InputStream inputStream = con.getErrorStream();
+                    InputStream inputStream = response.getEntity().getContent();
 
-                    System.out.println(con.getResponseMessage());
+
                     return Utility.readFile(inputStream);
                 }
             } catch (IOException e) {

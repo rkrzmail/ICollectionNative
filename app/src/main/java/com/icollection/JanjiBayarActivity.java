@@ -93,7 +93,7 @@ import static com.icollection.util.AppUtil.NowX;
  * Created by Mounzer on 8/22/2017.
  */
 
-public class JanjiBayarActivity extends AppCompatActivity {
+public class JanjiBayarActivity extends AppActivity {
     private static final String LOG_TAG = JanjiBayarActivity.class.getSimpleName();
     Toolbar toolbar;
     private Vector<ModelData> data = new Vector<ModelData>();
@@ -296,7 +296,7 @@ public class JanjiBayarActivity extends AppCompatActivity {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
                 ImageViewHolder.setImageBitmap(bitmap);*/
                 getCamera("CAMERA_REQUEST_JB1",data,ImageViewHolder);
-
+                waitGPS();
             }
 
 
@@ -307,7 +307,7 @@ public class JanjiBayarActivity extends AppCompatActivity {
                 bitmap2.compress(Bitmap.CompressFormat.JPEG, 70, baos);
                 ImageViewHolder2.setImageBitmap(bitmap2);*/
                 getCamera("CAMERA_REQUEST_JB2",data,ImageViewHolder2);
-
+                waitGPS();
             }
 
 
@@ -354,7 +354,7 @@ public class JanjiBayarActivity extends AppCompatActivity {
             try {
                 date = sdf.parse(order.getData1());
                 if (date.getTime()<new Date().getTime()){
-                    date = new Date();
+                    //date = new Date();
                 }
             } catch (ParseException e) {
                 date = new Date();
@@ -1421,6 +1421,7 @@ public class JanjiBayarActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
 
                 .subscribe(location -> {
+                    exitIfMockLocationOn(location, getActivity());
                     order.setLongitude(String.valueOf(location.getLongitude()));
                     order.setLangitude(String.valueOf(location.getLatitude()));
                     Utility.setSetting(JanjiBayarActivity.this, "GPS",location.getLatitude()+","+location.getLongitude());

@@ -824,7 +824,9 @@ public class ListViewDetailsFirstDesignActivity extends AppCompatActivity {
             sbuff.append("").append("\n");
             // sbuff.append("Note: No telp anda ").append(getdata("telp")).append("\n");
             sbuff.append("SMS WA CENTER KAMM, ").append("\n");
-            sbuff.append("08999731188. Harap hubungi kami").append("\n");
+            //sbuff.append("08999731188. Harap hubungi kami").append("\n");
+            sbuff.append("085217171118 Harap hubungi kami").append("\n");
+
             sbuff.append("bila ada perubahan Nomor Telpon Anda").append("\n");
             sbuff.append("").append("\n");
             sbuff.append("Bila dikunjungi/ditagih maka").append("\n");

@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.icollection"
         minSdkVersion 17
-        targetSdkVersion 30
-        versionCode 101
-        versionName "2.5.151"
+        targetSdkVersion 31
+        versionCode 115
+        versionName "2.5.165"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -96,4 +96,12 @@ dependencies {
 
     implementation files('libs/btsdk.jar')
     implementation files('libs/AndroidSDK.jar')
+
+    implementation files('libs/apache-commons-lang.jar')
+    implementation files('libs/apache-httpcomponents-httpclient.jar')
+    implementation files('libs/apache-httpcomponents-httpcore.jar')
+    implementation files('libs/apache-mime4j-0.6.jar')
+    implementation files('libs/org.apache.commons.io.jar')
+
+
 }

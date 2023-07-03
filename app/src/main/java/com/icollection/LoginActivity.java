@@ -90,6 +90,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         checkset(nson, Manifest.permission.READ_EXTERNAL_STORAGE);
         checkset(nson, Manifest.permission.READ_PHONE_STATE);
 
+        checkset(nson, Manifest.permission.BLUETOOTH_SCAN);
+        checkset(nson, Manifest.permission.BLUETOOTH_ADVERTISE);
+        checkset(nson, Manifest.permission.BLUETOOTH_ADMIN);
+        checkset(nson, Manifest.permission.BLUETOOTH);
+        checkset(nson, Manifest.permission.BLUETOOTH_CONNECT);
+
+
         if (nson.size()>=1){
             ActivityCompat.requestPermissions(this, nson.asStringArray(), 1);
         }

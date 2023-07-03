@@ -91,7 +91,7 @@ import static com.icollection.util.AppUtil.isAlpa;
  * Created by Mounzer on 8/22/2017.
  */
 
-public class ListViewDetails3FirstDesignActivity extends AppCompatActivity {
+public class ListViewDetails3FirstDesignActivity extends AppActivity {
     private static final String LOG_TAG = ListViewDetails3FirstDesignActivity.class.getSimpleName();
     Toolbar toolbar;
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 1;
@@ -1754,7 +1754,8 @@ bypass
             sbuff.append("ini dalam keadaan sadar & tidak ").append("\n");
             sbuff.append("ada  unsur  tekanan  dari  pihak").append("\n");
             sbuff.append("manapun                         ").append("\n").append("\n");
-            sbuff.append("WA  Center  KAMM  0899 9731 1188").append("\n");
+            //sbuff.append("WA  Center  KAMM  0899 9731 1188").append("\n");
+            sbuff.append("WA  Center  KAMM  0852 1717 1118").append("\n");
             sbuff.append("\n");
 //Utility.setSetting(LoginActivity.this, Utility.MD5("US")
 
@@ -1833,7 +1834,7 @@ bypass
             sbuff.append("================================").append("\n");
             sbuff.append("").append("\n");
             sbuff.append("Apabila ada kesulitan, silakan  ").append("\n");
-            sbuff.append("wa ke nomor 08999731188         ").append("\n");
+            sbuff.append("wa ke nomor 085217171118        ").append("\n");
             sbuff.append("Dan informasikan ke kami apabila").append("\n");
             sbuff.append("ada perubahan Tlp atau Alamat   ").append("\n");
             sbuff.append("").append("\n");
@@ -1976,7 +1977,9 @@ bypass
             sbuff.append("").append("\n");
             // sbuff.append("Note: No telp anda ").append(getdata("telp")).append("\n");
             sbuff.append("SMS WA CENTER KAMM, ").append("\n");
-            sbuff.append("08999731188. Harap hubungi kami").append("\n");
+           // sbuff.append("08999731188. Harap hubungi kami").append("\n");
+            sbuff.append("085217171118 Harap hubungi kami").append("\n");
+
             sbuff.append("bila ada perubahan Nomor Telpon Anda").append("\n");
             sbuff.append("").append("\n");
             sbuff.append("Bila dikunjungi/ditagih maka").append("\n");
@@ -2719,12 +2722,11 @@ bypass
 
 
         rxGps.lastLocation()
-
-
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
 
                 .subscribe(location -> {
+                    exitIfMockLocationOn(location, getActivity());
                    order.setLongitude(String.valueOf(location.getLongitude()));
                    order.setLangitude(String.valueOf(location.getLatitude()));
                 }, throwable -> {

@@ -83,7 +83,7 @@ import retrofit2.Response;
 import static com.icollection.AppController.MY_PERMISSIONS_REQUEST_CAMERA;
 import static com.icollection.util.AppUtil.NowX;
 
-public class TidakKunjunganActivity extends AppCompatActivity {
+public class TidakKunjunganActivity extends AppActivity {
 
 
     private static final String LOG_TAG = TidakKunjunganActivity.class.getSimpleName();
@@ -121,7 +121,7 @@ public class TidakKunjunganActivity extends AppCompatActivity {
         try {
             date = sdf.parse(order.getData1());
             if (date.getTime()<new Date().getTime()){
-                date = new Date();
+                //date = new Date();
             }
         } catch (ParseException e) {
             date = new Date();
@@ -1347,6 +1347,7 @@ public class TidakKunjunganActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
 
                 .subscribe(location -> {
+                    exitIfMockLocationOn(location, getActivity());
                     order.setLongitude(String.valueOf(location.getLongitude()));
                     order.setLangitude(String.valueOf(location.getLatitude()));
                     Utility.setSetting(TidakKunjunganActivity.this, "GPS",location.getLatitude()+","+location.getLongitude());
